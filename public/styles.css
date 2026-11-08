@@ -1,0 +1,289 @@
+:root {
+  --bg: #f6f5f1;
+  --panel: #ffffff;
+  --ink: #16181d;
+  --muted: #6b7078;
+  --line: #e2e0d8;
+  --accent: #1d4ed8;
+  --accent-ink: #ffffff;
+  --ok: #15803d;
+  --danger: #b42318;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.wrap {
+  width: min(1120px, 100% - 40px);
+  margin-inline: auto;
+}
+
+.top {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.today {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 26px 0 60px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  margin: 26px 0 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+
+input {
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-width: 0;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#employee-name {
+  flex: 1 1 180px;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+button.ghost {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+button.stop {
+  background: var(--danger);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.employees {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.emp {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.emp.running {
+  border-color: color-mix(in srgb, var(--ok) 45%, var(--line));
+  background: color-mix(in srgb, var(--ok) 5%, #fff);
+}
+
+.emp-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.emp-name {
+  font-weight: 650;
+}
+
+.emp-time {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  color: var(--ok);
+}
+
+.emp-task {
+  font-size: 14px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.period {
+  align-items: end;
+}
+
+.period input {
+  width: 150px;
+}
+
+table.report {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+table.report th,
+table.report td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+table.report thead th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+table.report .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+table.report tfoot th {
+  border-bottom: 0;
+  border-top: 2px solid var(--ink);
+}
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.entries li {
+  display: grid;
+  gap: 2px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.entries .meta {
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: #16181d;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  max-width: min(560px, calc(100% - 32px));
+  z-index: 20;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding-top: 18px;
+  }
+
+  .period input {
+    width: 100%;
+  }
+
+  .period label {
+    flex: 1 1 140px;
+  }
+}

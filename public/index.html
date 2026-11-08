@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Учёт рабочего времени</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-inner">
+        <div class="brand">Учёт времени</div>
+        <div class="today" id="today"></div>
+      </div>
+    </header>
+
+    <main class="wrap layout">
+      <section class="panel" aria-labelledby="employees-title">
+        <h2 id="employees-title">Сотрудники</h2>
+
+        <form id="employee-form" class="row">
+          <input
+            id="employee-name"
+            name="name"
+            type="text"
+            placeholder="Имя сотрудника"
+            maxlength="80"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">Добавить</button>
+        </form>
+
+        <ul id="employees" class="employees"></ul>
+        <p id="employees-empty" class="muted">Пока никого нет — добавьте первого сотрудника.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="report-title">
+        <h2 id="report-title">Отчёт за период</h2>
+
+        <form id="report-form" class="row period">
+          <label>С <input type="date" id="from" required /></label>
+          <label>По <input type="date" id="to" required /></label>
+          <button type="submit">Показать</button>
+        </form>
+
+        <p class="muted" id="report-range"></p>
+
+        <table class="report" id="report-table" hidden>
+          <thead>
+            <tr>
+              <th>Сотрудник</th>
+              <th class="num">Записей</th>
+              <th class="num">Время</th>
+            </tr>
+          </thead>
+          <tbody id="report-body"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">Итого</th>
+              <th class="num" id="report-total">0 мин</th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <p class="muted" id="report-empty" hidden>За выбранный период записей нет.</p>
+
+        <h3>Записи</h3>
+        <ul id="entries" class="entries"></ul>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
